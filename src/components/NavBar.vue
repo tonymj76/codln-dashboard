@@ -4,6 +4,7 @@
     flat
     app
     color="#FBFBFB"
+    height="86"
   >
     <div class="d-flex align-center">
       <v-app-bar-nav-icon class="menu__icon" @click="drawer = !drawer">
@@ -77,7 +78,7 @@
     v-model="drawer"
     :color="color"
     :expand-on-hover="expandOnHover"
-    mini-variant
+    :mini-variant="miniVariant"
     mini-variant-width="96"
     permanent
     absolute
@@ -97,25 +98,60 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider class="mb-5" ></v-divider>
 
-      <v-list-item>
-        <v-list-item-icon>
-        </v-list-item-icon>
+      <v-list-item
+        v-for="navItem in navItems"
+        :key="navItem.title"
+        link
+      >
+        <v-list-item-action class="mb-5" router :to="navItem.route">
+          <v-img
+          alt="menu"
+          :src="navItem.url"
+        />
+        </v-list-item-action>
       </v-list-item>
+
+      <v-divider class="my-5"></v-divider>
+      <v-list-item
+        v-for="navFab in navFabButtons"
+        :key="navFab.color"
+        link
+      >
+        <v-list-item-action class="mb-1">
+          <v-btn fab x-small :color="navFab.color" depressed>
+            {{navFab.title}}
+          </v-btn>
+        </v-list-item-action>
+      </v-list-item>
+
     </v-list>
+      <v-divider class="my-5" ></v-divider>
+    <template v-slot:append>
+        <div class="pa-2 mb-8">
+          <v-btn class="mx-2 " fab depressed color="#f8f5fd6b">
+        <v-icon dark color="#23B3E8" size='40'>mdi-chevron-right</v-icon>
+      </v-btn>
+        </div>
+      </template>
   </v-navigation-drawer>
   </nav>
 </template>
 
 <script>
+import home from '@/assets/img/home.svg';
+import link from '@/assets/img/link.svg';
+import share from '@/assets/img/share.svg';
+
 export default {
   name: 'NavBar',
   data() {
     return {
       drawer: false,
-      expandOnHovor: false,
+      expandOnHover: false,
       color: '#052231',
+      miniVariant: true,
       items: {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
         title: '<span class="dark--text text--lighten-4">Chioma Davis</span>',
@@ -123,9 +159,32 @@ export default {
       },
 
       navItems: [
-        { title: 'Home', url: '@/assets/img/home.svg', alt: 'home' },
-        { title: 'navigate', url: '@/assets/img/link.svg', alt: 'link' },
-        { title: 'share', url: '@/assets/img/people.svg', alt: 'people' },
+        {
+          title: 'Home', url: home, alt: 'home', route: '/',
+        },
+        {
+          title: 'navigate', url: link, alt: 'link', route: '#',
+        },
+        {
+          title: 'share', url: share, alt: 'people', route: '#',
+        },
+      ],
+      navFabButtons: [
+        {
+          title: 'PN', color: '#23B3E8',
+        },
+        {
+          title: 'JI', color: '#4DBD98',
+        },
+        {
+          title: 'LG', color: '#3D43A2',
+        },
+        {
+          title: 'AW', color: '#F15832',
+        },
+        {
+          title: 'AW', color: '#004F71',
+        },
       ],
     };
   },
@@ -134,6 +193,10 @@ export default {
 
 <style lang="scss" scope>
   $dark-blue: #03293D;
+  $nav-color: #f8f5fd6b;
+  .n__color{
+    background: &$nav-color !important;
+  }
   .header__title {
     color : $dark-blue;
   }

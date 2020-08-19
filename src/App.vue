@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <NavBar />
-    <v-main>
+    <v-main class="main">
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
- body{
+ .main{
    background: #E5E5E5;
  }
 
