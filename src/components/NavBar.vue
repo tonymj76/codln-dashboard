@@ -1,11 +1,19 @@
 <template>
-
-  <v-app-bar
+  <nav>
+    <v-app-bar
     flat
     app
     color="#FBFBFB"
   >
     <div class="d-flex align-center">
+      <v-app-bar-nav-icon class="menu__icon" @click="drawer = !drawer">
+        <v-img
+          alt="menu"
+          class="shrink"
+          contain
+          src="@/assets/img/menu.svg"
+        />
+    </v-app-bar-nav-icon>
       <v-img
         alt="fcmb Logo"
         class="shrink mr-2"
@@ -47,7 +55,7 @@
         contain
         src="@/assets/img/tag.svg"
       />
-      <v-list class="ml-6" dense flat>
+      <v-list class="ml-6" dense flat color="#FBFBFB">
         <v-list-item>
           <v-list-item-avatar>
             <v-img :src="items.avatar"></v-img>
@@ -63,6 +71,41 @@
       </v-list>
     </div>
   </v-app-bar>
+  <v-navigation-drawer
+    app
+    floating
+    v-model="drawer"
+    :color="color"
+    :expand-on-hover="expandOnHover"
+    mini-variant
+    mini-variant-width="96"
+    permanent
+    absolute
+    dark
+  >
+    <v-list
+      dense
+      nav
+      class="py-0"
+    >
+      <v-list-item two-line :class="miniVariant && 'px-0'">
+        <v-list-item-avatar>
+          <img src="@/assets/img/logo.svg" alt="codeln logo">
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>CodLn</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list-item>
+        <v-list-item-icon>
+        </v-list-item-icon>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
+  </nav>
 </template>
 
 <script>
@@ -70,11 +113,20 @@ export default {
   name: 'NavBar',
   data() {
     return {
+      drawer: false,
+      expandOnHovor: false,
+      color: '#052231',
       items: {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
         title: '<span class="dark--text text--lighten-4">Chioma Davis</span>',
         email: "<span class='blue--text text--lighten-2'>Chioma@natterbar</span>",
       },
+
+      navItems: [
+        { title: 'Home', url: '@/assets/img/home.svg', alt: 'home' },
+        { title: 'navigate', url: '@/assets/img/link.svg', alt: 'link' },
+        { title: 'share', url: '@/assets/img/people.svg', alt: 'people' },
+      ],
     };
   },
 };
@@ -98,6 +150,10 @@ export default {
     linear-gradient(0deg, #4DBD98, #4DBD98), linear-gradient(0deg, #4DBD98, #4DBD98),
     #4DBD98;
     border-radius: 5px;
+  }
+  .menu__icon{
+    margin-left: 25px;
+    margin-right: 41px;
   }
 
 </style>
