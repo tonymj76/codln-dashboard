@@ -2,7 +2,9 @@
   <v-app>
     <NavBar />
     <v-main class="main">
-      <router-view></router-view>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
     </v-main>
   </v-app>
 </template>

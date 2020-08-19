@@ -215,7 +215,7 @@ export default {
     border-radius: 5px;
   }
   .menu__icon{
-    margin-left: 25px;
+    margin-left: 20px;
     margin-right: 41px;
   }
 
