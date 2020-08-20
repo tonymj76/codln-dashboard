@@ -81,7 +81,7 @@
     :mini-variant="miniVariant"
     mini-variant-width="96"
     permanent
-    absolute
+    fixed
     dark
   >
     <v-list
