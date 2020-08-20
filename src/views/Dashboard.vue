@@ -11,24 +11,61 @@
             background-color="transparent"
             color='#F15832'
           >
-            <v-tabs-slider color='#F15832'></v-tabs-slider>
             <v-tab
-              v-for="i in tabs"
-              :key="i"
-              :href="`#tab-${i}`"
+              v-for="tabName in tabs"
+              :key="tabName"
             >
-              Tab {{i}}
+              {{tabName}}
             </v-tab>
-            <v-tab-item
-              v-for="i in tabs"
-              :key="i"
-              :value="'tab-' + i"
-            >
+
+          </v-tabs>
+          <v-tabs-items v-model="tab" class="mt-10">
+            <v-tab-item>
               <v-card flat tile>
-                <v-card-text>{{text}}</v-card-text>
+                <v-card-text>
+                  Overview
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </v-card-text>
               </v-card>
             </v-tab-item>
-          </v-tabs>
+            <v-tab-item>
+              <v-card flat tile>
+                <v-card-text>
+                Teams
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card flat tile>
+                <v-card-text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <Module />
+            </v-tab-item>
+            <v-tab-item>
+              <v-card flat tile>
+                <v-card-text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+          </v-tabs-items>
         </v-row>
       </v-col>
     </v-row>
@@ -36,14 +73,19 @@
 </template>
 
 <script>
+import Module from '@/components/Module.vue';
 
 export default {
   name: 'Dashboard',
+  components: {
+    Module,
+  },
   data() {
     return {
       tab: null,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      tabs: 3,
+      tabs: [
+        'Overview', 'Teams', 'Test', 'Modules', 'Progress',
+      ],
     };
   },
 };
