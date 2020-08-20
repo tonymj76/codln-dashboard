@@ -1,4 +1,5 @@
 # codln-dash
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1940085a-5681-4cff-a7f1-3a5e09f0d57d/deploy-status)](https://app.netlify.com/sites/codln-dashboard/deploys)
 
 ## Project setup
 ```

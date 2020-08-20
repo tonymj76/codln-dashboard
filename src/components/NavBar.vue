@@ -74,7 +74,6 @@
   </v-app-bar>
   <v-navigation-drawer
     app
-    floating
     v-model="drawer"
     :color="color"
     :expand-on-hover="expandOnHover"
